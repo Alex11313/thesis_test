@@ -30,13 +30,11 @@ class EmployeeViewSet(mixins.CreateModelMixin,
     lookup_field = 'uid'
 
 
-class DepartmentViewSet(mixins.CreateModelMixin,
-                        mixins.RetrieveModelMixin,
-                        mixins.DestroyModelMixin,
+class DepartmentViewSet(mixins.RetrieveModelMixin,
                         mixins.ListModelMixin,
                         GenericViewSet):
     """
-    Department CRUD methods.
+    Department GET, LIST methods.
     """
 
     queryset = Department.objects.all()
