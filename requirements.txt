@@ -1,0 +1,11 @@
+Django==3.2.6
+django-filter==2.4.0
+django-rest-swagger==2.2.0
+djangorestframework==3.12.4
+djangorestframework-simplejwt==4.8.0
+drf-yasg==1.20.0
+gunicorn==20.0.4
+Markdown==3.3.4
+rq==1.4.2
+djangorestframework-camel-case==1.2.0
+django-cleanup==5.2.0
