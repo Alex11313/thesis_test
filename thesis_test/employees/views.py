@@ -21,7 +21,7 @@ class EmployeeViewSet(mixins.CreateModelMixin,
     serializer_class = EmployeeSerializer
 
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['surname', 'department', ]
+    filterset_fields = ['surname', 'department__uid', 'department__name', ]
 
     permission_classes = [IsAuthenticated]
 
