@@ -1,6 +1,6 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.viewsets import GenericViewSet
 
 from employees.models import Employee, Department
@@ -40,6 +40,6 @@ class DepartmentViewSet(mixins.RetrieveModelMixin,
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
 
-    permission_classes = []
+    permission_classes = [AllowAny]
 
     lookup_field = 'uid'

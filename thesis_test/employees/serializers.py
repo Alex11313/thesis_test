@@ -5,6 +5,7 @@ from django.db.models import Sum
 from rest_framework import serializers
 
 from employees.models import Employee, Department
+from project.models import Project
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
@@ -16,13 +17,21 @@ class EmployeeSerializer(serializers.ModelSerializer):
         lookup_field = 'uid'
 
 
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = ('uid', 'name', 'department', 'employees', 'boss')
+        read_only_fields = ('uid', )
+
+
 class DepartmentSerializer(serializers.ModelSerializer):
     count = serializers.SerializerMethodField()
     salary_sum = serializers.SerializerMethodField()
+    projects = ProjectSerializer(many=True, read_only=True)
 
     class Meta:
         model = Department
-        fields = ('uid', 'name', 'count', 'salary_sum', 'director')
+        fields = ('uid', 'name', 'count', 'salary_sum', 'director', 'projects')
         read_only_fields = ('uid', )
         lookup_field = 'uid'
 

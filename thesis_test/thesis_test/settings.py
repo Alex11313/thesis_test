@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_filters',
     'django_cleanup',
     'employees',
+    'project',
 ]
 
 MIDDLEWARE = [

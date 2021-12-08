@@ -1,6 +1,6 @@
-from django.db import models
-from django.apps import apps
 import uuid
+
+from django.db import models
 
 
 class Department(models.Model):
