@@ -47,7 +47,7 @@ class DepartmentViewSet(mixins.RetrieveModelMixin,
 
 
 def get_123(request):
-    """Проверка доступности логина"""
+    """GET запрос "123" """
 
     response = {
         'is_taken': 123
