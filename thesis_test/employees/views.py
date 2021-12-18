@@ -6,6 +6,7 @@ from rest_framework.viewsets import GenericViewSet
 from employees.models import Employee, Department
 from employees.pagination import EmployeePagination
 from employees.serializers import EmployeeSerializer, DepartmentSerializer
+from django.http import JsonResponse
 
 
 class EmployeeViewSet(mixins.CreateModelMixin,
@@ -43,3 +44,12 @@ class DepartmentViewSet(mixins.RetrieveModelMixin,
     permission_classes = [AllowAny]
 
     lookup_field = 'uid'
+
+
+def get_123(request):
+    """Проверка доступности логина"""
+
+    response = {
+        'is_taken': 123
+    }
+    return JsonResponse(response)
