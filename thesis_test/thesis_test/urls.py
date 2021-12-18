@@ -29,7 +29,7 @@ urlpatterns = [
     path('api/', include(router.urls), name='api'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('1234555555rt/', get_123),
+    path('get_123/', get_123),
 ]
 
 if settings.ENABLE_DOCS:
