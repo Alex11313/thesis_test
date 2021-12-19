@@ -1,18 +1,17 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework import permissions
+
 
 from employees.models import Employee, Department
 from employees.pagination import EmployeePagination
 from employees.serializers import EmployeeSerializer, DepartmentSerializer
-from django.http import JsonResponse
-from snippets.models import Snippet
-from snippets.serializers import SnippetSerializer
-from django.http import Http404
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
+
 
 class EmployeeViewSet(mixins.CreateModelMixin,
                       mixins.RetrieveModelMixin,
@@ -50,11 +49,13 @@ class DepartmentViewSet(mixins.RetrieveModelMixin,
 
     lookup_field = 'uid'
 
-class SnippetList(APIView):
+
+class NumberViewSet(APIView):
+    permission_classes = [permissions.AllowAny, ]
 
     def get(self, request, format=None):
-     """GET запрос через class """
-    Response = {
-        'is_taken': 123
-    }
-        return Response()
+        """GET запрос через class """
+        response = {
+           'number': 123
+        }
+        return Response(response)
