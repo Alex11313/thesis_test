@@ -1,7 +1,12 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.response import Response
+from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework import permissions
+
 
 from employees.models import Employee, Department
 from employees.pagination import EmployeePagination
@@ -43,3 +48,14 @@ class DepartmentViewSet(mixins.RetrieveModelMixin,
     permission_classes = [AllowAny]
 
     lookup_field = 'uid'
+
+
+class NumberViewSet(APIView):
+    permission_classes = [permissions.AllowAny, ]
+
+    def get(self, request, format=None):
+        """GET запрос через class """
+        response = {
+           'number': 123
+        }
+        return Response(response)

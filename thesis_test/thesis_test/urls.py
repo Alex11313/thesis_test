@@ -18,8 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
+from requests import get
 from rest_framework import permissions
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from employees.views import NumberViewSet
 
 from thesis_test.router import router
 
@@ -28,6 +30,7 @@ urlpatterns = [
     path('api/', include(router.urls), name='api'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('get/', NumberViewSet.as_view()),
 ]
 
 if settings.ENABLE_DOCS:
